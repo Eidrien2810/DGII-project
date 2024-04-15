@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <main></main>
+  <script>
+    fetch('http://localhost:1234/api/contribuyentes')
+    .then(res => res.json())
+    .then(data => {
+      const main = document.querySelector('main')
+      for (let i = 0; i < data.length; i++) {
+        const link = document.createElement('a')
+        link.href = `Cont.html?rnc=${data[i].RncCedula}`
+        link.textContent = `${data[i].Nombre} ${data[i].Apellido}`
+        main.append(link)
+        main.innerHTML += '<br/>'
+      }
+      console.log(data)
+    })
+    .catch(err => console.error(err))
+  </script>
+</body>
+</html>

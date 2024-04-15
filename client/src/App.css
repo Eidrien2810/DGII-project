@@ -1,0 +1,45 @@
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+.loader {
+  width: 100%;
+  min-height: calc(100vh - 2em);
+  display: grid;
+  place-items: center;
+}
+th, td {
+  text-align: center;
+  padding: .5em;
+}
+th {
+  text-transform: capitalize;
+}
+.content {
+  min-height: 100vh;
+  width: 100%;
+  padding: 1em;
+  padding-bottom: 2.5em;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, auto) 1fr;
+  gap: 2em;
+}
+.pagination {
+  display: flex;
+  align-self: flex-end;
+  justify-self: center;
+}
+.content--contribuyente {
+  width: 100%;
+  min-height: 100vh;
+  padding: 1em;
+}
+.currentButton {
+  background-color: #646cff;
+}

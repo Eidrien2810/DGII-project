@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <main>
+    <table border="1">
+      <thead>
+        <tr>
+            <td>ComprobanteId</td>
+            <td>Estado</td>
+            <td>FechaEmision</td>
+            <td>Itbis</td>
+            <td>Monto</td>
+            <td>NCF</td>
+            <td>RncCedula</td>
+            <td>TasaItbis</td>
+            <td>TipoComprobante</td>
+        </tr>
+      </thead>
+    </table>
+  </main>
+  <script>
+    const rnc = window.location.search.split('=')[1]
+    console.log(rnc)
+    fetch('http://localhost:1234/api/contribuyentes')
+    .then(res => res.json())
+    .then(data => {
+      const contribuyente = data.find(obj => obj.RncCedula === rnc)
+      console.log(contribuyente)
+      fetch('http://localhost:1234/api/comprobantes')
+      .then(res => res.json())
+      .then(ncf => {
+        const comprobantes = ncf.filter(obj => obj.RncCedula == contribuyente.RncCedula)
+        console.log(comprobantes)
+        const main = document.querySelector('main')
+        const h1 = document.createElement('h1')
+        h1.textContent = `${contribuyente.Nombre} ${contribuyente.Apellido}`
+        main.prepend(h1)
+        const table = document.querySelector('table')
+        let totalItbis = 0
+        for (const obj of comprobantes) {
+          table.innerHTML += `<tr>
+              <td>${obj.ComprobanteId}</td>
+              <td>${obj.Estado}</td>
+              <td>${obj.FechaEmision}</td>
+              <td>${obj.Itbis}</td>
+              <td>${obj.Monto}</td>
+              <td>${obj.NCF}</td>
+              <td>${obj.RncCedula}</td>
+              <td>${obj.TasaItbis}</td>
+              <td>${obj.TipoComprobante}</td>
+              </tr>`
+          totalItbis += obj.Itbis
+        }
+        main.innerHTML += `<h2>Suma Ibis</h2>
+        <p>${new Intl.NumberFormat('es-DO', { style: 'currency', currency: 'DOP' }).format(totalItbis)}</p>`
+      })
+    })
+  </script>
+</body>
+</html>

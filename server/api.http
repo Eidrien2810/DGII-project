@@ -1,0 +1,5 @@
+### lista de comprobantes
+GET http://localhost:1234/api/comprobantes
+
+### lista de contribuyentes
+GET http://localhost:1234/api/contribuyentes
