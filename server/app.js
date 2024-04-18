@@ -49,7 +49,7 @@ const getDirecciones = async () => {
 }
 
 server.get('/', (req, res) => {
-  res.send('<a href="http://localhost:1234/api/contribuyentes">Contribuyentes</a><br/><a href="http://localhost:1234/api/comprobantes">Comprobantes</a>')
+  res.send(`<a href="/api/contribuyentes">Contribuyentes</a><br/><a href="/api/comprobantes">Comprobantes</a>`)
 })
 
 server.get('/api/contribuyentes', async (req, res) => {
