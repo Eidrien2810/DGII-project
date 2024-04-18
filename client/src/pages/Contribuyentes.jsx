@@ -3,12 +3,12 @@ import { Contexto } from '../context/Context';
 import { useContext, useEffect, useState } from 'react';
 import LoaderSvg from '../assets/Infinity-1s-200px.svg'
 import Paginacion from '../components/Pagination';
-import Pagination from '@mui/material/Pagination';
+// import Pagination from '@mui/material/Pagination';
 
 const Contribuyentes = () => {
   const { data, loading, error } = useContext(Contexto)
   const [contribuyentes, setContribuyentes] = useState(null)
-  const [results, setResults] = useState(5)
+  const [results] = useState(5)
   const [currentPage, setCurrentPage] = useState(1)
   
   const totalPages = Math.ceil(data.length / results)
@@ -30,7 +30,7 @@ const Contribuyentes = () => {
       <div style={{
         overflowX: 'auto'
       }}>
-        <table border={1} >
+        <table>
           <thead>
             <tr>
               {/* <th>Id</th> */}
@@ -67,7 +67,7 @@ const Contribuyentes = () => {
           </tbody>
         </table>
       </div>
-      <Paginacion gap="5" totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Paginacion gap={5} totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
       {/* <Pagination count={10} variant="outlined" shape="rounded" /> */}
     </main> 
   )

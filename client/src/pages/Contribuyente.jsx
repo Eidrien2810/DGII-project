@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import LoaderSvg from '../assets/Infinity-1s-200px.svg'
 import { Contexto } from '../context/Context'
 
@@ -45,9 +45,9 @@ const Contribuyente = () => {
     return <section className='loader'><img src={LoaderSvg} alt="loading" /></section>
   }
   if  (!contribuyente || !comprobantes) {
-    if ((Number(id) > data.length || Number(id) < 1) && Number(id) !== 0){
+    /* if ((Number(id) > data.length || Number(id) < 1) && Number(id) !== 0){
       return <Navigate to="/*" />
-    }
+    } */
     return <section>Network error...</section>
   }
   

@@ -22,7 +22,7 @@ th {
 .content {
   min-height: 100vh;
   width: 100%;
-  padding: 1em;
+  padding: 2em;
   padding-bottom: 2.5em;
 
   display: grid;
@@ -38,8 +38,11 @@ th {
 .content--contribuyente {
   width: 100%;
   min-height: 100vh;
-  padding: 1em;
+  padding: 2em;
 }
 .currentButton {
   background-color: #646cff;
+}
+table, th, td {
+  border: 1px solid rgba(255, 255, 255, 0.87);
 }
